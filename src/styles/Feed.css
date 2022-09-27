@@ -5,7 +5,8 @@
     min-height: 10rem;
     border-radius: 2rem;
     padding: 0.5rem;
-    background-color: #F6E1E1;
+    /* background-color: #F6E1E1; */
+    /* color: #f8cdcd; */
     display: flex;
     justify-content: start;
     flex-direction: column;

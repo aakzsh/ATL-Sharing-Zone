@@ -25,7 +25,7 @@ span {
 }
 
 .upload-full{
-height: 100vh;
+height: 90vh;
 max-height: 100%;
 display: flex;
 justify-content: center;
@@ -40,6 +40,7 @@ flex-direction: column;
 
 .input{
     padding-left: 1rem;
+    padding-right: 1rem;
 }
 .input, select{
     
@@ -92,4 +93,30 @@ font-size: 1.1rem;
     border-radius: 0.5rem;
     float: left;
     margin-bottom: 1rem;
+}
+
+label{
+    float: left;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.radio2{
+    /* background-color: pink; */
+    width: 20rem;
+    display: block;
+    float: right;
+    text-align: left;
+    /* gap: 2rem; */
+    /* justify-content: start; */
+}
+
+input, textarea{
+    border-radius: 0.3rem;
+    font-family: sans-serif;
+}
+
+.cityvillage{
+    width: 8rem;
 }
