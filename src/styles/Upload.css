@@ -1,0 +1,95 @@
+
+.start-btn{
+    width: 15rem;
+}
+
+.aimlogo{
+    width: 15rem;
+    margin-top: 1rem;
+}
+
+
+.subtitle{
+    font-size: 1.6rem;
+    max-width: 22rem;
+}
+
+span {
+    content: "\2192";
+  }
+
+.arrow{
+    /* font-size: 20rem; */
+    width: 10rem;
+    margin-top: 1rem;
+}
+
+.upload-full{
+height: 100vh;
+max-height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.upload2{
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.input{
+    padding-left: 1rem;
+}
+.input, select{
+    
+    width: 20rem;
+    height: 1.7rem;
+    font-size: 1.1rem;
+    border: 2px solid rgba(0, 0, 0, 0.588);
+}
+
+select{
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    width: 10rem;
+    height:2rem;
+}
+
+.radioparent{
+font-size: 1.1rem;
+    width: 20rem;
+    display: block;
+}
+
+
+.radio1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.typeofupload{
+    width: 10rem;
+    color: white;
+    background-color:  var(--purplebg);
+    font-weight: 600;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+}
+
+.expanded{
+    height: 5rem;
+}
+
+.imginput{
+    display: none;
+}
+
+.upload-images{
+    border-radius: 0.5rem;
+    float: left;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,66 @@
+.feedtilebody{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 20rem;
+    min-height: 10rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: #F6E1E1;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pfp{
+    height: 3.5rem;
+    width:3.5rem;
+    background-color: blue;
+    border-radius: 3rem;
+}
+
+.tileheader{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
+}
+
+.name{
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: -1rem;
+}
+
+.namedes{
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.p{
+    text-align: start;
+}
+
+
+.vidsimages{
+    height: 10rem;
+    width: 100%;
+    background-color: black;
+    border-radius: 1rem;
+}
+
+.iconsdiv{
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+.iconsdiv>img{
+height: 24px;
+width: 24px;
+}

@@ -1,0 +1,32 @@
+.logo{
+    width: 15rem;
+    margin-top: 1rem;
+}
+
+.btn-parent{
+align-items: center;
+    display: flex;
+justify-content: center;
+gap: 0.5rem;
+}
+
+.title{
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-bottom: -1rem;
+}
+
+.txt-parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 25rem;
+}
+
+.page-content{
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
