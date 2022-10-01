@@ -4,7 +4,7 @@
     width: 20rem;
     min-height: 10rem;
     border-radius: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
     /* background-color: #F6E1E1; */
     /* color: #f8cdcd; */
     display: flex;
@@ -16,7 +16,10 @@
 .pfp{
     height: 3.5rem;
     width:3.5rem;
-    background-color: blue;
+    /* background-color: blue; */
+    background-image: url("../images/flower.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 3rem;
 }
 
@@ -48,9 +51,13 @@
 
 
 .vidsimages{
+    display: inline;
+    /* flex-direction: row; */
+    /* direction: ; */
     height: 10rem;
     width: 100%;
-    background-color: black;
+   overflow-x: auto;
+    /* background-color: black; */
     border-radius: 1rem;
 }
 

@@ -22,7 +22,11 @@ const FeedTile = (props) => {
       
        <div className="vidsimages">
        <ReactPlayer url={props.link} height="100%" width="100%" />
-     
+    {
+  
+  props.imglength>0?  [...Array(props.imglength)].map((e, i) => <img src={"https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + i + ".jpg?alt=media"} style={{"width": "15rem"}}/>):
+   <p></p>
+  }
        </div>
        <div className="iconsdiv">
        <img src={heart} alt="" />

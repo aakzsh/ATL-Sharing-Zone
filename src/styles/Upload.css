@@ -120,3 +120,18 @@ input, textarea{
 .cityvillage{
     width: 8rem;
 }
+
+.previewimages{
+    height: 6rem;
+    margin: 0.5rem;
+    /* display: flexbox; */
+    /* flex-direction: row; */
+    /* justify-content: start; */
+}
+
+.previewparent{
+    width: 20rem;
+display: block;
+/* align-items: left; */
+justify-content: left;
+}

@@ -6,12 +6,63 @@ import { useState } from "react";
 import { db, firebase } from "../utils/utils";
 import { doc, collection, query, where, getDocs, updateDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { async } from "@firebase/util";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const Upload = () => {
 
+  const storage = getStorage();
+  // const storageRef = ref(storage, 'some-child');
+
+  const [docname, setDocName]=useState(null)
+  // var uploadEvent;
+
+  const [uploadEvent, setUploadEvent] = useState(null)
+  
+const imgRef = ref(storage);
+// const [uploadEvent, setUploadEvent] = useState([])
+// var uploadEvent = [];
+const imageInputChanged=(e)=>{
+
+  if(e.target.files.length > 4){
+    alert("Upload 4 or lesser images")
+  }
+  else{
+    // uploadEvent = e;
+    setUploadEvent(e)
+    for (let index = 0; index < 4; index++) {
+      document.getElementById("img"+(index+1)).src = ""
+    }
+
+    for (let index = 0; index < e.target.files.length; index++) {
+      document.getElementById("img"+(index+1)).src = URL.createObjectURL(e.target.files[index])
+  // uploadEvent.push(URL.createObjectURL(e.target.files[index]))
+    }
+  }
+
+
+
+
+  
+}
+
+
+const uploadImage=(e, docstring)=>{
+  console.log(e.target.files)
+
+  for (let index = 0; index < e.target.files.length; index++) {
+    var fileVal = e.target.files[index]
+//  var fileVal=document.getElementById("hehe").value
+  uploadBytes(ref(storage, atlCode + docstring+index + ".jpg"), fileVal).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+  });
+  }
+
+}
 
   const Push = async (data) => {
-    const docRef = doc(db, 'posts', atlCode+(Math.random() + 1).toString(36).substring(4));
+    // var randomstring = 
+    uploadImage(uploadEvent, docname)
+    const docRef = doc(db, 'posts', atlCode+docname);
     // const docRef = db.collection('posts').doc('xyz');
     await setDoc(docRef, uploadInfo).then((val)=>{
       console.log(val)
@@ -169,6 +220,7 @@ const Upload = () => {
                   <option value="Daman and Diu">Daman and Diu</option>
                   <option value="Delhi">Delhi</option>
                   <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Ladakh">Ladakh</option>
                   <option value="Puducherry">Puducherry</option>
                   <option value="Goa">Goa</option>
                   <option value="Gujarat">Gujarat</option>
@@ -242,16 +294,32 @@ const Upload = () => {
                 ></textarea>
                 <br />
                 <br />
-                <input
+                {
+          <div className="previewparent">
+                <img src="" id="img1" alt="" className="previewimages"/>
+              <img src="" id="img2" alt="" className="previewimages"/>
+              <img src="" id="img3" alt="" className="previewimages"/>
+              <img src="" id="img4" alt="" className="previewimages"/>
+          </div>
+                }
+               
+          
+                <img src="" id="preview" alt="" />
+                <input multiple
+                // yahan check karna hai
                   type="file"
                   id="hehe"
                   accept=".jpg, .png, .jpeg, .webp"
                   className="imginput"
                   onChange={(e) => {
-                      
+                      // uploadImage(e)
+                      imageInputChanged(e)
+
                     // s(e.target.value)
                    }}
                 />
+                {/* <img src={this.state.img} alt="img"/> */}
+
                 <button
                   onClick={() => {
                     document.getElementById("hehe").click();
@@ -260,15 +328,17 @@ const Upload = () => {
                 >
                   Add Images
                 </button>
-                <br />
+               
                 <br />
                 <input
                   type="text"
                   className="input"
                   placeholder="Video link if any"
-                  onInput={(e) => {
+                  // defaultValue=""
+                  value={videoLink}
+                  onChange={(d) => {
                       
-                    setVideoLink(e.target.value)
+                    setVideoLink(d.target.value)
                    }}
                 />
                 <br /> <br />
@@ -290,6 +360,8 @@ const Upload = () => {
             <div>
               <button
                 onClick={(e) => {
+var x = (Math.random() + 1).toString(36).substring(4)
+                  setDocName(x)
                   
                   // navigate("/");
                   uploadInfo = {
@@ -303,7 +375,9 @@ const Upload = () => {
                     "title": title,
                     "description": description,
                     "videoLink": videoLink,
-                    "anythingElse": anythingElse
+                    "anythingElse": anythingElse,
+                    "imglength": uploadEvent.target.files.length,
+                    "docname": atlCode + docname
                   }
                   console.log(uploadInfo)
                   Push(uploadInfo).then((_)=>{

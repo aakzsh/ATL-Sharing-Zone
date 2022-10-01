@@ -45,7 +45,7 @@ getData().then((_)=>{
 
 
    }, [] );
-   const listItems = feed.map((item) => <FeedTile name={item['name']} schoolName = {item['schoolName']} city={item['city']} desc= {item['description']} link={item['videoLink']} />);
+   const listItems = feed.map((item) => <FeedTile name={item['name']} schoolName = {item['schoolName']} city={item['city']} desc= {item['description']} link={item['videoLink']} imglength={item['imglength']} docname= {item['docname']}/>);
 
     return (
         <>
