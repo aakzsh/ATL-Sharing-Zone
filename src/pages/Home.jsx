@@ -17,7 +17,6 @@ return (
 </center>
     <div className='btn-parent'>
         <button  onClick={e => navigate('/upload')}>Share Your Story</button>
-        {/* <button  onClick={e => navigate('/feed')}>See Others' Stories</button> */}
     </div>
 </div>
     </>

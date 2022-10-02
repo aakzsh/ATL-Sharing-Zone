@@ -3,31 +3,24 @@ import "../styles/Upload.css";
 import { useNavigate } from "react-router-dom";
 import arrow from "../images/arrow.svg";
 import { useState } from "react";
-import { db, firebase } from "../utils/utils";
-import { doc, collection, query, where, getDocs, updateDoc, serverTimestamp, setDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
+import { db } from "../utils/utils";
+import { doc, setDoc } from "firebase/firestore";
+// import { async } from "@firebase/util";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const Upload = () => {
 
   const storage = getStorage();
-  // const storageRef = ref(storage, 'some-child');
-
   const [docname, setDocName]=useState(null)
-  // var uploadEvent;
-
   const [uploadEvent, setUploadEvent] = useState(null)
   
-const imgRef = ref(storage);
-// const [uploadEvent, setUploadEvent] = useState([])
-// var uploadEvent = [];
+// const imgRef = ref(storage);
 const imageInputChanged=(e)=>{
 
   if(e.target.files.length > 4){
     alert("Upload 4 or lesser images")
   }
   else{
-    // uploadEvent = e;
     setUploadEvent(e)
     for (let index = 0; index < 4; index++) {
       document.getElementById("img"+(index+1)).src = ""
@@ -35,7 +28,6 @@ const imageInputChanged=(e)=>{
 
     for (let index = 0; index < e.target.files.length; index++) {
       document.getElementById("img"+(index+1)).src = URL.createObjectURL(e.target.files[index])
-  // uploadEvent.push(URL.createObjectURL(e.target.files[index]))
     }
   }
 
@@ -51,7 +43,6 @@ const uploadImage=(e, docstring)=>{
 
   for (let index = 0; index < e.target.files.length; index++) {
     var fileVal = e.target.files[index]
-//  var fileVal=document.getElementById("hehe").value
   uploadBytes(ref(storage, atlCode + docstring+index + ".jpg"), fileVal).then((snapshot) => {
     console.log('Uploaded a blob or file!');
   });
@@ -60,10 +51,8 @@ const uploadImage=(e, docstring)=>{
 }
 
   const Push = async (data) => {
-    // var randomstring = 
     uploadImage(uploadEvent, docname)
     const docRef = doc(db, 'posts', atlCode+docname);
-    // const docRef = db.collection('posts').doc('xyz');
     await setDoc(docRef, uploadInfo).then((val)=>{
       console.log(val)
     })
@@ -83,11 +72,10 @@ const uploadImage=(e, docstring)=>{
   const [videoLink, setVideoLink] = useState(null);
   const [anythingElse, setAnythingElse] = useState(null);
   const [designation, setDesignation] = useState(null);
-  // console.log(this.props.match)
   const navigate = useNavigate();
   return (
     <>
-      {page == 0 ? (
+      {page === 0 ? (
         <>
           <div className="upload-full">
             <img src={aimlogo} className="aimlogo" alt="" />
@@ -110,7 +98,7 @@ const uploadImage=(e, docstring)=>{
             <img src={arrow} alt="" className="arrow" />
           </div>
         </>
-      ) : page == 1 ? (
+      ) : page === 1 ? (
         <>
           <div className="upload-full upload2">
             <img src={aimlogo} className="aimlogo" alt="" />
@@ -312,13 +300,10 @@ const uploadImage=(e, docstring)=>{
                   accept=".jpg, .png, .jpeg, .webp"
                   className="imginput"
                   onChange={(e) => {
-                      // uploadImage(e)
                       imageInputChanged(e)
 
-                    // s(e.target.value)
                    }}
                 />
-                {/* <img src={this.state.img} alt="img"/> */}
 
                 <button
                   onClick={() => {
