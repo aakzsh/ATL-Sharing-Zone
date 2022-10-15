@@ -16,10 +16,10 @@
 .pfp{
     height: 3.5rem;
     width:3.5rem;
-    /* background-color: blue; */
-    background-image: url("../images/flower.jpg");
+    background-color: white;
+    background-image: url("../images/user.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border-radius: 3rem;
 }
 
@@ -40,6 +40,7 @@
 .namedes{
     margin-left: 1rem;
     display: flex;
+    text-align: start;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
@@ -51,10 +52,11 @@
 
 
 .vidsimages{
-    display: inline;
+    /* display: inline; */
     /* flex-direction: row; */
     /* direction: ; */
     height: 10rem;
+    overflow-y: hidden;
     width: 100%;
    overflow-x: auto;
     /* background-color: black; */
@@ -72,3 +74,4 @@
 height: 24px;
 width: 24px;
 }
+

@@ -105,7 +105,7 @@ const uploadImage=(e, docstring)=>{
 
             <center>
               <div className="content">
-                <input type="text" className="input" placeholder="Your Name" 
+                <input type="text" className="input" placeholder="Your Name" maxLength={50}
               onInput={(e) => {
                setName(e.target.value);
               }} />{" "}
@@ -114,6 +114,7 @@ const uploadImage=(e, docstring)=>{
                   type="text"
                   className="input"
                   placeholder="Name of School"
+                  maxLength={100}
                   onInput={(e) => {
                     setSchoolName(e.target.value);
                    }} 
@@ -177,7 +178,7 @@ const uploadImage=(e, docstring)=>{
                 <br />
                 <br />
                 <br />
-                <input type="text" className="input" placeholder="ATL Code"  onChange={(e) => {
+                <input type="text" className="input" placeholder="ATL Code"  maxLength={20} onChange={(e) => {
                       setATLCode(e.target.value)
                      }}/>
                 <br />
@@ -264,7 +265,7 @@ const uploadImage=(e, docstring)=>{
                 </div>
                 <br />
                 <br />
-                <input type="text" className="input" placeholder="Title" onChange={(e) => {
+                <input type="text" className="input" placeholder="Title" maxLength={100} onChange={(e) => {
                       
                       setTitle(e.target.value)
                      }} />{" "}
@@ -274,6 +275,7 @@ const uploadImage=(e, docstring)=>{
                   cols="60"
                   name="description"
                   className="input expanded"
+                  maxLength={250}
                   placeholder="Few lines about your experience that will inspire others"
                   onChange={(e) => {
                       
@@ -320,6 +322,7 @@ const uploadImage=(e, docstring)=>{
                   className="input"
                   placeholder="Video link if any"
                   // defaultValue=""
+                  maxLength={200}
                   value={videoLink}
                   onChange={(d) => {
                       
@@ -331,6 +334,7 @@ const uploadImage=(e, docstring)=>{
                   rows="5"
                   cols="60"
                   name="anythingelse"
+                  maxLength={250}
                   className="input expanded"
                   placeholder="Anything else you want to share?"
                   onChange={(e) => {
@@ -362,7 +366,8 @@ var x = (Math.random() + 1).toString(36).substring(4)
                     "videoLink": videoLink,
                     "anythingElse": anythingElse,
                     "imglength": uploadEvent.target.files.length,
-                    "docname": atlCode + docname
+                    "docname": atlCode + docname,
+                    "timestamp": Math.floor(Date.now() / 1000)
                   }
                   console.log(uploadInfo)
                   Push(uploadInfo).then((_)=>{

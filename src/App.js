@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Feed from './pages/Feed';
 import Upload from './pages/Upload';
+import ViewPost from './pages/ViewPost';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           <Route exact path="/upload" element={<Upload />}></Route>
         </Routes>
        
+        <Routes>
+          <Route  path="/view" element={<ViewPost />}></Route>
+        </Routes>
+
       </Router>
     </div>
   );

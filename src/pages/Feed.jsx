@@ -1,6 +1,6 @@
 import FeedTile from "../components/FeedTile"
 import { db } from "../utils/utils";
-import {  getDocs,  collectionGroup } from "firebase/firestore";
+import {  getDocs,  collectionGroup, orderBy } from "firebase/firestore";
 // import { async } from "@firebase/util";
 import { useEffect, useState } from "react";
 
@@ -14,7 +14,7 @@ const getData = async (data) => {
     const colRef = collectionGroup(db, "posts");
     let temp = []
 
-    await getDocs(colRef).then((val)=>{
+    await getDocs(colRef). then((val)=>{
         
         val.docs.forEach((item)=>{
            temp.push(item.data())
@@ -22,6 +22,10 @@ const getData = async (data) => {
    
    
        })
+    
+       temp.sort((a, b) => a.timestamp < b.timestamp ? 1 : -1);
+
+
    
     setFeed(temp)
 
@@ -40,7 +44,7 @@ getData().then((_)=>{
 
 
    }, [] );
-   const listItems = feed.map((item) => <FeedTile name={item['name']} schoolName = {item['schoolName']} city={item['city']} desc= {item['description']} link={item['videoLink']} imglength={item['imglength']} docname= {item['docname']}/>);
+   const listItems = feed.map((item) => <FeedTile name={item['name']} postTitle={item['title']} schoolName = {item['schoolName']} city={item['city']} schoolState={item['state']} desc= {item['description']} link={item['videoLink']} imglength={item['imglength']} atlcode = {item['ATLCode']} docname= {item['docname']} designation={item['designation']}/>);
 
     return (
         <>
