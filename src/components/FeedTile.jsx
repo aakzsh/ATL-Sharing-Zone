@@ -3,31 +3,23 @@ import "../styles/Feed.css";
 import send from '../images/send.svg'
 import downloadIcon from '../images/download.svg'
 import heart from '../images/heart.svg'
+import { RWebShare } from "react-web-share";
 import React from 'react'
 import { saveAs } from 'file-saver'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
 import ReactPlayer from 'react-player'
+import { async } from "@firebase/util";
 
 const FeedTile = (props) => {
   console.log("https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + 1 + ".jpg?alt=media")
 
-  const download = () => {
+  const download = async () => {
 
-    // for (let i = 0; i < props.imglength; i++) {
-    
-      var element = document.createElement("a");
-      var file = new Blob(
-        [
-          "https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + 1 + ".jpg?alt=media"
-        ],
-        { type: "image/*" }
-      );
-      element.href = URL.createObjectURL(file);
-      element.download = props.docname + 1 + ".jpg";
-      element.click();
-    // }
+    for (let i = 0; i < props.imglength; i++) {
+     document.getElementById("image1").click();
+    }
  
     
  
@@ -56,17 +48,30 @@ var desig = props.designation;
        {props.link!=null?<ReactPlayer url={props.link} height="10rem" width="100%" controls="true" />: <div></div>}
     {
   
-  props.imglength>0?  [...Array(props.imglength)].map((e, i) => <img src={"https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + i + ".jpg?alt=media"} style={{"width": "15rem", "maxHeight": "10rem", "maxWidth": "15rem"}} alt=""/>):
+  props.imglength>0?  [...Array(props.imglength)].map((e, i) => 
+  <a href={"https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + i + ".jpg?alt=media"} id={"image"+i}>
+    <img src={"https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + i + ".jpg?alt=media"} style={{"width": "15rem", "maxHeight": "10rem", "maxWidth": "15rem"}} alt=""/>
+  </a>
+  ):
    <p></p>
   }</Carousel>
        </div>
        <div className="iconsdiv">
        {/* <img src={heart} alt="" /> */}
-       <img src={send} alt=""  onClick={()=>{navigator.clipboard.writeText("https://atl-sharing-zone.web.app/view?"+props.docname);
-      alert("The shareable link has been copied to clipboard!")
-      }}/>
+       
         <img src={downloadIcon} alt=""  onClick={()=>{download()}} style={{"cursor": "pointer"}}/>
+        <RWebShare
+        data={{
+          text: "Check out this amazing post by " + props.name + "\n",
+          url: "https://atl-sharing-zone.web.app/view?"+props.docname,
+          title: "ATL Showcase",
+        }}
+        onClick={() => console.log("shared successfully!")}
+      >
+        <img src={send} alt="icon" />
+      </RWebShare>
        </div>
+
       </div>
 
 
