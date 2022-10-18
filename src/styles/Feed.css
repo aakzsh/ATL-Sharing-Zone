@@ -56,7 +56,7 @@
     /* flex-direction: row; */
     /* direction: ; */
     height: 10rem;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     width: 100%;
    overflow-x: auto;
     /* background-color: black; */
@@ -75,3 +75,8 @@ height: 24px;
 width: 24px;
 }
 
+
+
+/* .carousel .slider-wrapper{
+width: 3px;
+} */

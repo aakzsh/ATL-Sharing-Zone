@@ -2,7 +2,7 @@
 import "../styles/Feed.css";
 import send from '../images/send.svg'
 import downloadIcon from '../images/download.svg'
-import heart from '../images/heart.svg'
+import open from '../images/open.svg'
 import { RWebShare } from "react-web-share";
 import React from 'react'
 import { saveAs } from 'file-saver'
@@ -11,8 +11,10 @@ import { Carousel } from 'react-responsive-carousel';
 
 import ReactPlayer from 'react-player'
 import { async } from "@firebase/util";
+import { useNavigate } from "react-router-dom";
 
 const FeedTile = (props) => {
+  const navigate = useNavigate()
   console.log("https://firebasestorage.googleapis.com/v0/b/atl-sharing-zone.appspot.com/o/"+props.docname + 1 + ".jpg?alt=media")
 
   const download = async () => {
@@ -42,9 +44,9 @@ var desig = props.designation;
        </div>
        <p className="p" style={{"marginBottom": "-1rem"}}><b>{props.postTitle}</b></p>
        <p className="p">{props.desc}</p>
-      
        <div className="vidsimages">
-        <Carousel axis="horizontal"  showStatus={false}> 
+        <Carousel axis="horizontal"  showStatus={false} showThumbs={false} className="carousel-slider"> 
+        
        {props.link!=null?<ReactPlayer url={props.link} height="10rem" width="100%" controls="true" />: <div></div>}
     {
   
@@ -68,8 +70,9 @@ var desig = props.designation;
         }}
         onClick={() => console.log("shared successfully!")}
       >
-        <img src={send} alt="icon" />
+        <img src={send} alt="icon" style={{"cursor": "pointer"}} />
       </RWebShare>
+      <img src={open} alt=""  onClick={()=>{navigate("/view?"+props.docname)}} style={{"cursor": "pointer", "width": "20px"}}/>
        </div>
 
       </div>

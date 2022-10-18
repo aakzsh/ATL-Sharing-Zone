@@ -2,6 +2,7 @@ import FeedTile from "../components/FeedTile"
 import { db } from "../utils/utils";
 import {  getDocs,  collectionGroup, orderBy } from "firebase/firestore";
 // import { async } from "@firebase/util";
+import aimlogo from '../images/aimlogo.png'
 import { useEffect, useState } from "react";
 
 
@@ -49,6 +50,7 @@ getData().then((_)=>{
     return (
         <>
        <center>
+        <img src={aimlogo} alt="" srcset=""className="logo"/>
         {listItems}
        </center>
         </>

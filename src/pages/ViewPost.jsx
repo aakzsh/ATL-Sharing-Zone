@@ -2,6 +2,7 @@
 import aimlogo from '../images/aimlogo.png'
 import '../styles/ViewPost.css'
 import { useNavigate } from 'react-router-dom'
+
 import { useEffect, useState } from 'react'
 import { db, initialise } from '../utils/utils'
 import FeedTile from '../components/FeedTile'
@@ -46,6 +47,8 @@ return (
     <>
 <center>
 <div>
+<img src={aimlogo} alt=""  className='logo'/>
+
 <FeedTile name={feedPost['name']} postTitle={feedPost['title']} schoolName = {feedPost['schoolName']} city={feedPost['city']} schoolState={feedPost['state']} desc= {feedPost['description']} link={feedPost['videoLink']} imglength={feedPost['imglength']} atlcode = {feedPost['ATLCode']} docname= {feedPost['docname']} designation={feedPost['designation']}/>
 
 <button onClick={()=>{navigate('/')}}>Navigate to Home</button>
